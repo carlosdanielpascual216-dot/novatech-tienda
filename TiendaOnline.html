@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVATECH - Tienda Tecnológica</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- BARRA DE ANUNCIO SUPERIOR -->
+  <div class="top-bar">
+    ⚡ Envíos express a todo el Perú | Garantía oficial de 12 meses en todos los productos ⚡
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <header class="navbar">
+    <div class="logo">NOVATECH <span>TECH STORE</span></div>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="#inicio" onclick="closeMenu()">Inicio</a>
+      <a href="#categorias" onclick="closeMenu()">Categorías</a>
+      <a href="#productos" onclick="closeMenu()">Productos</a>
+      <a href="#testimonios" onclick="closeMenu()">Testimonios</a>
+      <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn-icon" onclick="openAuthModal()" title="Cuenta / Registro">👤</button>
+      <div class="cart-badge" onclick="toggleCartModal()">
+        🛒 <span id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero">
+    <div class="hero-text">
+      <span class="tag">⚡ NUEVA COLECCIÓN 2026</span>
+      <h1>La tecnología que quieres. <span>En un solo lugar.</span></h1>
+      <p>Laptops, monitores, periféricos y accesorios para estudiar, trabajar y jugar.</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn-primary">Explorar productos &rarr;</a>
+        <a href="#categorias" class="btn-outline">Ver categorías</a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper">
+      <span class="badge-off">🔥 Hasta 30% OFF</span>
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Laptop Novatech">
+      <span class="badge-top">⭐ Top ventas</span>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section id="categorias" class="section-container">
+    <span class="section-subtitle">EXPLORA</span>
+    <h2 class="section-title">Todo para tu setup</h2>
+    <div class="categories-grid">
+      <div class="category-card" onclick="filterByCategory('laptops')">
+        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Laptops">
+        <div class="category-overlay">
+          <h3>Laptops</h3>
+          <p>Potencia y movilidad</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="filterByCategory('monitores')">
+        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80" alt="Monitores">
+        <div class="category-overlay">
+          <h3>Monitores</h3>
+          <p>Imagen espectacular</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="filterByCategory('perifericos')">
+        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80" alt="Gaming">
+        <div class="category-overlay">
+          <h3>Gaming & Periféricos</h3>
+          <p>Teclados y Mouses pro</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="filterByCategory('perifericos')">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Audio">
+        <div class="category-overlay">
+          <h3>Audio Hi-Fi</h3>
+          <p>Sonido inmersivo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section id="productos" class="section-container bg-light">
+    <div class="products-header">
+      <div>
+        <span class="section-subtitle">CATÁLOGO</span>
+        <h2 class="section-title">Productos destacados</h2>
+      </div>
+      <div class="filter-controls">
+        <input type="text" id="search-input" placeholder="Buscar producto..." onkeyup="searchProducts()">
+        <select id="filter-select" onchange="filterProducts()">
+          <option value="todos">Todos los productos</option>
+          <option value="laptops">Laptops</option>
+          <option value="monitores">Monitores</option>
+          <option value="perifericos">Periféricos</option>
+        </select>
+      </div>
+    </div>
+    <div class="products-grid" id="products-container"></div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="section-container text-center">
+    <span class="section-subtitle">LO QUE DICEN DE NOSOTROS</span>
+    <h2 class="section-title">TESTIMONIOS</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>Elegí comprar aquí porque necesitaba mi laptop con urgencia. Vivo en Los Olivos y llegó en menos de 3 horas. ¡Muchas gracias por la rapidez!</p>
+        <span class="testimonial-author">— Luz Castillo</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>Quería sorprender a mi hermano con un monitor gaming. En otros lugares demoraban días, pero aquí me vino con su caja reforzada y bien protegido. Excelente servicio.</p>
+        <span class="testimonial-author">— Carlos Villanueva</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>Me gustó mucho que pude coordinar el envío express de mis periféricos por WhatsApp. Los productos son 100% originales. Gracias por la paciencia y buena atención.</p>
+        <span class="testimonial-author">— Katherine M.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER DE EMPAQUE Y ENVÍOS SEGUROS -->
+  <section class="banner-packaging">
+    <div class="banner-packaging-content">
+      <div class="packaging-box">
+        <h2>NOVATECH VIRTUAL</h2>
+        <p>📦 Envíos protegidos con empaque de alta seguridad antishock.</p>
+        <p>📲 WhatsApp Directo: <strong>+51 928 605 458</strong></p>
+        <p>🌐 <strong>www.novatech-store.com</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros" class="section-container about-grid">
+    <div class="about-content">
+      <span class="section-subtitle">SOBRE NOVATECH</span>
+      <h2>Tecnología sin complicaciones.</h2>
+      <p>Ofrecemos las mejores marcas tecnológicas, garantía oficial y envíos ultra rápidos a todo el Perú para potenciar tu espacio de estudio, trabajo y entretenimiento.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>+1,200</h3>
+        <p>Clientes satisfechos</p>
+      </div>
+      <div class="stat-card">
+        <h3>+50</h3>
+        <p>Productos en stock</p>
+      </div>
+      <div class="stat-card">
+        <h3>24/7</h3>
+        <p>Atención online</p>
+      </div>
+      <div class="stat-card">
+        <h3>100%</h3>
+        <p>Garantizado y Seguro</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section-container">
+    <div class="contact-card">
+      <div class="contact-info">
+        <span class="section-subtitle">CONTÁCTANOS</span>
+        <h2>¿Tienes alguna pregunta?</h2>
+        <p>Escríbenos y recibirás una respuesta de demostración en breves minutos.</p>
+      </div>
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <textarea placeholder="Mensaje" rows="4" required></textarea>
+        <button type="submit" class="btn-submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SUSCRIPCIÓN A OFERTAS -->
+  <section class="newsletter-section">
+    <h3>SUSCRÍBETE PARA RECIBIR NUESTRAS OFERTAS ❤</h3>
+    <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+      <input type="email" placeholder="Dirección de correo electrónico" required>
+      <button type="submit" class="btn-submit-dark">SUSCRIBIRSE</button>
+    </form>
+  </section>
+
+  <!-- MODAL REGISTRO / LOGIN -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+      <div class="auth-tabs">
+        <button id="tab-login" class="active" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+        <button id="tab-register" onclick="switchAuthTab('register')">Registrarse</button>
+      </div>
+
+      <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+        <h3>Bienvenido de nuevo</h3>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit" class="btn-submit">Ingresar</button>
+      </form>
+
+      <form id="register-form" class="auth-form hidden" onsubmit="handleRegister(event)">
+        <h3>Crear una cuenta</h3>
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Crear contraseña" required>
+        <button type="submit" class="btn-submit">Registrarme</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL CARRITO & PAGO -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+      <div id="cart-view">
+        <h2>Tu Carrito de Compras</h2>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+          <p>Total: $<span id="cart-total">0.00</span></p>
+          <button class="btn-submit" onclick="goToCheckout()">Proceder al pago</button>
+        </div>
+      </div>
+
+      <div id="checkout-view" class="hidden">
+        <h2>Proceso de Pago Seguro</h2>
+        <form onsubmit="processPayment(event)">
+          <div class="form-group">
+            <label>Titular de la tarjeta</label>
+            <input type="text" placeholder="Nombre en la tarjeta" required>
+          </div>
+          <div class="form-group">
+            <label>Número de Tarjeta</label>
+            <input type="text" placeholder="1234 5678 9101 1121" maxlength="16" required>
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="MM/AA" maxlength="5" required>
+            <input type="password" placeholder="CVV" maxlength="4" required>
+          </div>
+          <button type="submit" class="btn-submit">Confirmar y Pagar $<span id="checkout-total">0.00</span></button>
+          <button type="button" class="btn-link" onclick="backToCart()">← Volver al carrito</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER TIENDA VIRTUAL -->
+  <footer>
+    <div class="footer-links">
+      <p class="footer-subtitle">Enlaces rápidos</p>
+      <div class="links-grid">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Políticas de Privacidad</a>
+        <a href="#">Políticas de envío</a>
+        <a href="#">Políticas de Devolución</a>
+        <a href="#">Libro de Reclamaciones 📖</a>
+        <a href="#">¿Cómo hacer tu pedido?</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">NOVATECH</div>
+      <p>© 2026 NOVATECH · Todos los derechos reservados · Garantía y Calidad</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
