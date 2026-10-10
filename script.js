@@ -6,8 +6,8 @@ const products = [
   { id: 4, category: "perifericos", name: "Mouse Inalámbrico Gaming Pro", price: 49.00, img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=80" },
   { id: 5, category: "perifericos", name: "Audífonos Inalámbricos Hi-Fi", price: 120.00, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" },
   { id: 6, category: "perifericos", name: "Silla Gamer Ergonómica RGB", price: 250.00, img: "https://versusperu.com/wp-content/uploads/2023/12/V10-N1.jpg" },
-  { id: 7, category: "perifericos", name: "Cámara Web Logitech Ultra-Wide 4K", price: 65.00, img: "https://tse4.mm.bing.net/th/id/OIP.o1rvi7BLm3fcANwJvWKh-QHaF7?r=0&pid=Api&h=220&P=0" },
-  { id: 8, category: "laptops", name: "Disco Duro SSD M.2 1TB 760 PRO", price: 110.00, img: "https://m.media-amazon.com/images/I/61JR-7uSBiL._AC_.jpg" }
+  { id: 7, category: "perifericos", name: "Disco Duro SSD M.2 1TB 760 PRO", price: 65.00, img: "https://tse4.mm.bing.net/th/id/OIP.o1rvi7BLm3fcANwJvWKh-QHaF7?r=0&pid=Api&h=220&P=0" },
+  { id: 8, category: "laptops", name: "Camara Web 4K", price: 110.00, img: "https://m.media-amazon.com/images/I/61JR-7uSBiL._AC_.jpg" }
 ];
 
 let cart = [];
